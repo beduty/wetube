@@ -17,7 +17,7 @@
   },
   "scripts": {
     "babel-node": "babel-node --presets=@babel/preset-env",
-    "start": "nodemon --exec npm run babel-node -- index.js --delay 2"
+    "start": "nodemon --exec npm run babel-node -- init.js --delay 2"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

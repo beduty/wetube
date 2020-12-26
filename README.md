@@ -27,11 +27,17 @@ cloning Youtube with VanillaJS and NodeJS
    --> const middle = (req, res, next)=>{} 로 next에 또다른 MiddleWare 함수를 넣으면, 콜백체인으로 쓸 수 있다.
    --> app.use(middle)로 모든 연결에 대해서 중간에 middleWare를 넣어줄 수 있다.
 9. 추가한 미들웨어는 다음과 같다.
-
    1. morgan은 로깅용으로 사용--> app.use(morgan("dev"));로 사용하면 미들웨어로 동작하여 HTTP Method중간에 로그를 기록한다.
    2. helmet은 보안용으로 사용.
    3. body-parser : 사용자가 보내온 HTTP POST 데이터의 body로 부터 쉽게 정보를 얻을 수 있다.
       app.use(bodyParser.urlencoded({extended:true})); -> html로 보낸 정보를 읽을 수 있다.
       app.use(bodyParser.json());-> json으로 보낸 정보를 읽을 수 있다.
-
    4. cookie-parser : 쿠키는 사용자의 정보를 개인 컴퓨터에 저장하는 정보 단위다. 쿠키에 유저 정보를 저장할 수 있다.
+10. ES6에서는 모듈을 사용하여 파일간 변수등을 공유할 수 있다.
+    --> Export로 변수를 내보내고, Import로 변수를 받아서 사용할 수 있다.
+    --> export default "변수"; 해주면, 외부에서는 import "변수" from "./path"로 받아온다.
+    --> export 변수 해주면, 외부에서는 import {변수} from "./path"로 받아온다.
+11. 라우팅은 url 요청에 따라서 App이 응답하는 방법을 정의하는 것을 의미한다.
+    --> export const userRouter = express.Router();로 정의하여 app.js에서는 userRouter를 붙여주기만 하면 된다!
+    --> app.use("/user", userRouter); //으로 userRouter는 "http://localhost:4000/user" 이후의 라우트에 대해서 정의할 수 있다.
+    --> 요청 url의 성격에 따라서 .js파일을 분리할 수 있는 장점이 있다.
