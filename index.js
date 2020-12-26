@@ -1,4 +1,5 @@
-const express = require('express');
+// const express = require('express');
+import express from "express";
 const app = express();
 
 const PORT = 4000;
@@ -11,12 +12,12 @@ function handleHome(req, res){
     // req : 서버입장에서 브라우저가 어떤 정보들을 보냈는지 확인가능한다. 
     // res : 어떻게 응답할 지 명세할 수 있다. 
     // console.log(req);
-    res.send("Hello from home");
+    res.send("Hello from home1");
 }
 app.get("/", handleHome);
 
 function handleProfile(req, res){
-    res.send("You are on my profile");
+    res.send("You are on my profile1");
 }
 app.get("/profile", handleProfile);
 
