@@ -26,3 +26,12 @@ cloning Youtube with VanillaJS and NodeJS
    --> middle 함수 내부에서 어떠한 조건이 충족되면 next();를 호출하는 방식으로 사용한다.
    --> const middle = (req, res, next)=>{} 로 next에 또다른 MiddleWare 함수를 넣으면, 콜백체인으로 쓸 수 있다.
    --> app.use(middle)로 모든 연결에 대해서 중간에 middleWare를 넣어줄 수 있다.
+9. 추가한 미들웨어는 다음과 같다.
+
+   1. morgan은 로깅용으로 사용--> app.use(morgan("dev"));로 사용하면 미들웨어로 동작하여 HTTP Method중간에 로그를 기록한다.
+   2. helmet은 보안용으로 사용.
+   3. body-parser : 사용자가 보내온 HTTP POST 데이터의 body로 부터 쉽게 정보를 얻을 수 있다.
+      app.use(bodyParser.urlencoded({extended:true})); -> html로 보낸 정보를 읽을 수 있다.
+      app.use(bodyParser.json());-> json으로 보낸 정보를 읽을 수 있다.
+
+   4. cookie-parser : 쿠키는 사용자의 정보를 개인 컴퓨터에 저장하는 정보 단위다. 쿠키에 유저 정보를 저장할 수 있다.
