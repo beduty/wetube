@@ -29,15 +29,26 @@ cloning Youtube with VanillaJS and NodeJS
 9. 추가한 미들웨어는 다음과 같다.
    1. morgan은 로깅용으로 사용--> app.use(morgan("dev"));로 사용하면 미들웨어로 동작하여 HTTP Method중간에 로그를 기록한다.
    2. helmet은 보안용으로 사용.
-   3. body-parser : 사용자가 보내온 HTTP POST 데이터의 body로 부터 쉽게 정보를 얻을 수 있다.
+   3. body-parser : 사용자가 웹사이트로 전달하는 정보들을 검사한다. form, json으로 된 body를 검사한다. 사용자가 보내온 HTTP POST 데이터의 body로 부터 쉽게 정보를 얻을 수 있다.
       app.use(bodyParser.urlencoded({extended:true})); -> html로 보낸 정보를 읽을 수 있다.
       app.use(bodyParser.json());-> json으로 보낸 정보를 읽을 수 있다.
-   4. cookie-parser : 쿠키는 사용자의 정보를 개인 컴퓨터에 저장하는 정보 단위다. 쿠키에 유저 정보를 저장할 수 있다.
+   4. cookie-parser : 쿠키 전달 받아 사용할 수 있다. 사용자 인증등의 정보를 정보를 개인 컴퓨터에 저장한다. 쿠키에 유저 정보를 저장할 수 있다.
 10. ES6에서는 모듈을 사용하여 파일간 변수등을 공유할 수 있다.
     --> Export로 변수를 내보내고, Import로 변수를 받아서 사용할 수 있다.
-    --> export default "변수"; 해주면, 외부에서는 import "변수" from "./path"로 받아온다.
+    --> export default "변수"; 해주면, 외부에서는 import "변수" from "./path"로 받아온다. 파일 전체를 Export해준다.
     --> export 변수 해주면, 외부에서는 import {변수} from "./path"로 받아온다.
 11. 라우팅은 url 요청에 따라서 App이 응답하는 방법을 정의하는 것을 의미한다.
     --> export const userRouter = express.Router();로 정의하여 app.js에서는 userRouter를 붙여주기만 하면 된다!
     --> app.use("/user", userRouter); //으로 userRouter는 "http://localhost:4000/user" 이후의 라우트에 대해서 정의할 수 있다.
     --> 요청 url의 성격에 따라서 .js파일을 분리할 수 있는 장점이 있다.
+12. MVC(Model_Data, View_How does the data look, Controller_function that looks for the data)
+    --> 로직 부분들은 Controller에서 수행한다.
+
+13. [프로그램 WrapUp]
+
+    1. init.js가 시작점이다. ./app에서 import해온 App을 시작한다.(listen..)
+    2. app을 import해오는 시점은 App에서 express()를 받아와 실행시키고, use로 다양한 MiddleWare들(Logger, 쿠키파서, Body파서, 보안(Helmet))을 불러온 다음,
+       Route를 정의한 시점 이후 이다!
+    3. Router는 URL 그룹을 나누는 역할을 한다. 분기처리되어 그룹내의 Url관리를 할 수 있게한다.
+
+14. Pug는 MVC에서 V(View)에 해당한다. View Engine으로서 express로 res.send대신에 실제 HTML을 전달하는 역할을 한다.
